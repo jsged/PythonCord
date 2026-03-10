@@ -1,0 +1,5 @@
+[
+    {"name": "General", "file": "general.txt"},
+    {"name": "Gaming", "file": "gaming.txt"},
+    {"name": "Tech", "file": "tech.txt"}
+]

@@ -1,48 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>LAN Chat</title>
-<style>
-body {
-    font-family: Arial;
-}
+    <head>
+        <title>LAN Chat</title>
+        <link rel="stylesheet" href="../static/styles.css">
+    </head>
 
-#chat {
-    height: 300px;
-    border: 1px solid black;
-    overflow-y: scroll;
-    padding: 5px;
-}
-</style>
-</head>
+    <body>
 
-<body>
+        <img src="../static/images/logo_colour.png" alt="Logo" class="logo">
 
-<h2>LAN Chat</h2>
+        <div class="container">
+            <div class="sidebar">
+                <h3>Channels</h3>
+                <ul id="channel-list">
+                    {% for channel in channels %}
+                    <li class="channel-item" data-room="{{ channel.name.lower() }}">{{ channel.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
 
-<label>Nickname:</label>
-<input id="username">
+            <div class="main-content">
+                <label>Nickname:</label>
+                <input id="username" placeholder="Enter your nickname">
+                <p class="instructions">Enter your nickname above, then click on a channel</p>
 
-<label>Room:</label>
-<select id="room">
-<option value="general">general</option>
-<option value="gaming">gaming</option>
-<option value="tech">tech</option>
-</select>
+                <hr>
 
-<button onclick="joinRoom()">Join</button>
+                <div id="chat"></div>
 
-<hr>
+                <br>
 
-<div id="chat"></div>
+                <input id="message" placeholder="Message">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
 
-<br>
+        <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+        <script src="/static/chat.js"></script>
 
-<input id="message" placeholder="Message">
-<button onclick="sendMessage()">Send</button>
-
-<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-<script src="/static/chat.js"></script>
-
-</body>
+    </body>
 </html>

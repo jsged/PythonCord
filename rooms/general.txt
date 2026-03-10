@@ -3,3 +3,23 @@ Server: TestJSGED: yes
 --- jsged joined the room ---
 jsged: hiii
 --- jsged joined the room ---
+--- admin joined the room ---
+admin: test test test
+--- admin1 joined the room ---
+admin1: test
+admin1: yes
+admin: woah
+---  joined the room ---
+---  joined the room ---
+---  joined the room ---
+---  joined the room ---
+---  joined the room ---
+: 
+--- admin joined the room ---
+--- admin joined the room ---
+--- admin joined the room ---
+--- admin joined the room ---
+--- james joined the room ---
+--- admin joined the room ---
+--- admin joined the room ---
+--- admin joined the room ---

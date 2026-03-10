@@ -1,0 +1,82 @@
+body {
+    font-family: Arial;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f5f5f5;
+}
+
+.sidebar h3 {
+    margin-top: 0;
+}
+
+#channel-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.channel-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.channel-item:hover {
+    background-color: #e0e0e0;
+}
+
+.channel-item.active {
+    background-color: #525252;
+    color: white;
+}
+
+.main-content {
+    flex: 1;
+    padding: 10px;
+}
+
+.instructions {
+    color: #666;
+    font-size: 14px;
+    margin: 5px 0 10px 0;
+}
+
+#chat {
+    height: 400px;
+    border: 1px solid black;
+    overflow-y: scroll;
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 15%;
+    background-color: #d4d3d3;
+    border-radius: 5px;
+}
+
+.self-message {
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.user-message {
+    text-align: right;
+    font-weight: bold;
+}
+
+.server-message {
+    text-align: center;
+    font-style: italic;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+    padding: 10px;
+}
