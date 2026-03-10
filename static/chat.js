@@ -4,7 +4,7 @@ let currentRoom = null;
 let username = null;
 
 function joinRoom() {
-
+    
     username = document.getElementById("username").value;
     currentRoom = document.getElementById("room").value;
 
