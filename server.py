@@ -29,6 +29,12 @@ def handle_join(data):
 
     emit("chat_history", history)
 
+    join_msg = f"--- {username} joined the room ---"
+
+    socketio.emit("receive_message", join_msg, to=room)
+
+    with open(filepath, "a") as f:
+        f.write(join_msg + "\n")
 
 @socketio.on("send_message")
 def handle_message(data):
@@ -47,4 +53,4 @@ def handle_message(data):
 
 
 if __name__ == "__main__":
-    socketio.run(app, host="0.0.0.0", port=5000)
+    socketio.run(app, host="0.0.0.0", port=5001)

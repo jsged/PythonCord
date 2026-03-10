@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LAN Chat</title>
+<style>
+body {
+    font-family: Arial;
+}
+
+#chat {
+    height: 300px;
+    border: 1px solid black;
+    overflow-y: scroll;
+    padding: 5px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>LAN Chat</h2>
+
+<label>Nickname:</label>
+<input id="username">
+
+<label>Room:</label>
+<select id="room">
+<option value="general">general</option>
+<option value="gaming">gaming</option>
+<option value="tech">tech</option>
+</select>
+
+<button onclick="joinRoom()">Join</button>
+
+<hr>
+
+<div id="chat"></div>
+
+<br>
+
+<input id="message" placeholder="Message">
+<button onclick="sendMessage()">Send</button>
+
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script src="/static/chat.js"></script>
+
+</body>
+</html>

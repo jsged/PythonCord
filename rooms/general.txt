@@ -1,0 +1,5 @@
+JSGED: hi
+Server: TestJSGED: yes
+--- jsged joined the room ---
+jsged: hiii
+--- jsged joined the room ---
