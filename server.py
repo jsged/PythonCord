@@ -1,12 +1,16 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify, session
 from flask_socketio import SocketIO, emit, join_room, leave_room
 import os
 import json
+import hashlib
+import secrets
 
 app = Flask(__name__)
+app.secret_key = secrets.token_hex(16)  # Generate a random secret key for sessions
 socketio = SocketIO(app)
 
 ROOM_FOLDER = "rooms"
+USERS_FILE = "users.json"
 
 # Load channels from JSON file
 with open("channels.json", "r") as f:
@@ -15,9 +19,58 @@ with open("channels.json", "r") as f:
 # Create a mapping from channel name to file for easy lookup
 channel_files = {channel["name"].lower(): channel["file"] for channel in channels}
 
+# Load users from JSON file or create empty dict
+users = {}
+if os.path.exists(USERS_FILE):
+    with open(USERS_FILE, "r") as f:
+        users = json.load(f)
+
 @app.route("/")
 def index():
     return render_template("index.html", channels=channels)
+
+@app.route("/register", methods=["POST"])
+def register():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+
+    if not username or not password:
+        return jsonify({"success": False, "message": "Username and password required"})
+
+    if username in users:
+        return jsonify({"success": False, "message": "Username already exists"})
+
+    # Hash the password
+    hashed_password = hashlib.sha256(password.encode()).hexdigest()
+    users[username] = hashed_password
+
+    # Save users to file
+    with open(USERS_FILE, "w") as f:
+        json.dump(users, f)
+
+    return jsonify({"success": True, "message": "Registration successful"})
+
+@app.route("/login", methods=["POST"])
+def login():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+
+    if not username or not password:
+        return jsonify({"success": False, "message": "Username and password required"})
+
+    hashed_password = hashlib.sha256(password.encode()).hexdigest()
+    if users.get(username) == hashed_password:
+        session["username"] = username
+        return jsonify({"success": True, "message": "Login successful"})
+    else:
+        return jsonify({"success": False, "message": "Invalid credentials"})
+
+@app.route("/logout")
+def logout():
+    session.pop("username", None)
+    return jsonify({"success": True, "message": "Logged out"})
 
 
 @socketio.on("join_room")

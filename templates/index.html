@@ -20,18 +20,38 @@
             </div>
 
             <div class="main-content">
-                <label>Nickname:</label>
-                <input id="username" placeholder="Enter your nickname">
-                <p class="instructions">Enter your nickname above, then click on a channel</p>
+                <div id="auth-section">
+                    <h3>Login</h3>
+                    <input id="login-username" placeholder="Username" type="text">
+                    <input id="login-password" placeholder="Password" type="password">
+                    <button onclick="login()">Login</button>
+                    <button onclick="showRegister()">Register</button>
+                    <p id="auth-message"></p>
+                </div>
 
-                <hr>
+                <div id="register-section" style="display: none;">
+                    <h3>Register</h3>
+                    <input id="register-username" placeholder="Username" type="text">
+                    <input id="register-password" placeholder="Password" type="password">
+                    <input id="register-confirm-password" placeholder="Confirm Password" type="password">
+                    <button onclick="register()">Register</button>
+                    <button onclick="showLogin()">Back to Login</button>
+                    <p id="register-message"></p>
+                </div>
 
-                <div id="chat"></div>
+                <div id="chat-section" style="display: none;">
+                    <p>Welcome, <span id="current-user"></span>! <button onclick="logout()">Logout</button></p>
+                    <p class="instructions">Click on a channel to join</p>
 
-                <br>
+                    <hr>
 
-                <input id="message" placeholder="Message">
-                <button onclick="sendMessage()">Send</button>
+                    <div id="chat"></div>
+
+                    <br>
+
+                    <input id="message" placeholder="Message">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
             </div>
         </div>
 

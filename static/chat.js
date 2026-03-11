@@ -3,12 +3,81 @@ const socket = io();
 let currentRoom = null;
 let username = null;
 
+function showRegister() {
+    document.getElementById("auth-section").style.display = "none";
+    document.getElementById("register-section").style.display = "block";
+}
+
+function showLogin() {
+    document.getElementById("register-section").style.display = "none";
+    document.getElementById("auth-section").style.display = "block";
+}
+
+async function login() {
+    const username = document.getElementById("login-username").value;
+    const password = document.getElementById("login-password").value;
+
+    if (!username || !password) {
+        document.getElementById("auth-message").textContent = "Please fill in all fields";
+        return;
+    }
+
+    const response = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+    });
+
+    const result = await response.json();
+    document.getElementById("auth-message").textContent = result.message;
+
+    if (result.success) {
+        this.username = username;
+        document.getElementById("current-user").textContent = username;
+        document.getElementById("auth-section").style.display = "none";
+        document.getElementById("chat-section").style.display = "block";
+    }
+}
+
+async function register() {
+    const username = document.getElementById("register-username").value;
+    const password = document.getElementById("register-password").value;
+    const confirmPassword = document.getElementById("register-confirm-password").value;
+
+    if (!username || !password || !confirmPassword) {
+        document.getElementById("register-message").textContent = "Please fill in all fields";
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        document.getElementById("register-message").textContent = "Passwords do not match";
+        return;
+    }
+
+    const response = await fetch("/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+    });
+
+    const result = await response.json();
+    document.getElementById("register-message").textContent = result.message;
+
+    if (result.success) {
+        showLogin();
+        document.getElementById("auth-message").textContent = "Registration successful! Please login.";
+    }
+}
+
+async function logout() {
+    await fetch("/logout");
+    location.reload();
+}
+
 function joinRoom(channel = null) {
 
-    username = document.getElementById("username").value;
-
     if (!username) {
-        alert("Your username cannot be blank");
+        alert("Please login first");
         return;
     }
 
