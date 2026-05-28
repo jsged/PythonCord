@@ -1,24 +1,36 @@
-name: Update Version
+name: Update version.json
 
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - version.json
+
+permissions:
+  contents: write
 
 jobs:
-  build:
+  update-version:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Generate version.json
         run: |
-          echo "{ \"version\": \"$(git rev-parse --short HEAD)\", \"message\": \"$(git log -1 --pretty=%B | tr '\n' ' ')\" }" > version.json
+          HASH=$(git rev-parse --short HEAD)
+          MESSAGE=$(git log -1 --pretty=%B | tr '\n' ' ')
 
-      - name: Commit version file
+          echo "{ \"version\": \"$HASH\", \"message\": \"$MESSAGE\" }" > version.json
+
+      - name: Commit and push
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
           git add version.json
-          git commit -m "Update version.json" || exit 0
+          git commit -m "Update version.json [$HASH]" || exit 0
           git push
