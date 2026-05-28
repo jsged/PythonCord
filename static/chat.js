@@ -14,8 +14,8 @@ function showLogin() {
 }
 
 async function login() {
-    const username = document.getElementById("login-username").value;
-    const password = document.getElementById("login-password").value;
+    username = document.getElementById("login-username").value;
+    password = document.getElementById("login-password").value;
 
     if (!username || !password) {
         document.getElementById("auth-message").textContent = "Please fill in all fields";
@@ -32,7 +32,8 @@ async function login() {
     document.getElementById("auth-message").textContent = result.message;
 
     if (result.success) {
-        this.username = username;
+        //this.username = username;
+        console.log("Logged in as:", username);
         document.getElementById("current-user").textContent = username;
         document.getElementById("auth-section").style.display = "none";
         document.getElementById("chat-section").style.display = "block";
@@ -77,6 +78,7 @@ async function logout() {
 function joinRoom(channel = null) {
 
     if (!username) {
+        console.log(username);
         alert("Please login first");
         return;
     }
@@ -129,20 +131,21 @@ function sendMessage() {
 
 socket.on("receive_message", function(msg) {
 
-    addMessage(msg);
+    addMessage(msg, true);
 
 });
 
 socket.on("chat_history", function(messages) {
 
     messages.forEach(function(msg){
-        addMessage(msg.trim());
+        addMessage(msg.trim(), false);
     });
 
 });
 
-function addMessage(msg) {
+function addMessage(msg, playSound = false) {
     const chat = document.getElementById("chat");
+    let notification = new Audio('static/ping.mp3');
     
     const messageDiv = document.createElement("div");
     messageDiv.textContent = msg;
@@ -150,8 +153,14 @@ function addMessage(msg) {
     // Check if this is a message from the current user
     if (username && msg.startsWith(username + ": ")) {
         messageDiv.className = "message user-message";
+    } else if (msg.startsWith("---")) {
+        messageDiv.className = "server-message";
     } else {
         messageDiv.className = "self-message";
+
+        if (playSound) {
+            notification.play();
+        }
     }
     
     chat.appendChild(messageDiv);
@@ -173,6 +182,15 @@ document.addEventListener('DOMContentLoaded', function() {
             // Automatically join the selected channel
             const selectedChannel = this.dataset.room;
             joinRoom(selectedChannel);
+            pageTitle = "PyTalk - " + selectedChannel;
+            document.title = pageTitle;
         });
     });
 });
+
+fetch("/version.json")
+  .then(res => res.json())
+  .then(data => {
+      document.getElementById("version").textContent =
+          `v${data.version} - ${data.message}`;
+  });

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>LAN Chat</title>
+        <title>PyTalk</title>
         <link rel="stylesheet" href="../static/styles.css">
     </head>
 
     <body>
-
         <img src="../static/images/logo_colour.png" alt="Logo" class="logo">
+        <p id="version" class="instructions"></p>
 
         <div class="container">
             <div class="sidebar">
@@ -49,7 +49,7 @@
 
                     <br>
 
-                    <input id="message" placeholder="Message">
+                    <input id="message" class="message" placeholder="Message">
                     <button onclick="sendMessage()">Send</button>
                 </div>
             </div>

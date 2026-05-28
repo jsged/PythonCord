@@ -121,7 +121,7 @@ def handle_message(data):
     with open(filepath, "a") as f:
         f.write(text + "\n")
 
-    emit("receive_message", text, to=room)
+    emit("receive_message", (text + "\n"), to=room)
 
 @socketio.on("leave_room")
 def handle_leave(data):

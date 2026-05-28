@@ -85,3 +85,6 @@ See `requirements.txt` for specific versions.
 - This is a LAN-based application intended for local network use
 - Passwords are hashed using SHA-256
 - Messages are persisted in room-specific text files
+
+## Attributions
+- **Notification Sound**: Sound Effect by <a href="https://pixabay.com/users/soundshelfstudio-46480698/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=537581">SoundShelfStudio</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=537581">Pixabay</a>
