@@ -1,1 +1,1 @@
-{ "version": "3befda0", "message": "Refactor GitHub Actions workflow for version updates " }
+{ "version": "9c23394", "message": "Use workspace-relative path for version.json  Write and stage version.json using the repository workspace path (static/version.json) instead of an absolute path (/static/version.json) in the GitHub Actions workflow. This ensures the generated file is created, added, and pushed from the runner workspace so the commit succeeds.  " }
