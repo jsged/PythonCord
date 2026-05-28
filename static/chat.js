@@ -3,6 +3,13 @@ const socket = io();
 let currentRoom = null;
 let username = null;
 
+fetch("/static/version.json")
+  .then(res => res.json())
+  .then(data => {
+      document.getElementById("version").textContent =
+          `v${data.version} - ${data.message}`;
+  });
+
 function showRegister() {
     document.getElementById("auth-section").style.display = "none";
     document.getElementById("register-section").style.display = "block";
@@ -188,9 +195,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-fetch("/version.json")
-  .then(res => res.json())
-  .then(data => {
-      document.getElementById("version").textContent =
-          `v${data.version} - ${data.message}`;
-  });
