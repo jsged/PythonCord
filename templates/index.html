@@ -6,17 +6,22 @@
     </head>
 
     <body>
-        <img src="../static/images/logo_colour.png" alt="Logo" class="logo">
-        <p id="version" class="instructions"></p>
 
         <div class="container">
-            <div class="sidebar">
-                <h3>Channels</h3>
-                <ul id="channel-list">
-                    {% for channel in channels %}
-                    <li class="channel-item" data-room="{{ channel.name.lower() }}">{{ channel.name }}</li>
-                    {% endfor %}
-                </ul>
+
+            <div class="sidebar-area">
+
+                <img src="../static/images/logo_colour.png" alt="Logo" class="logo">
+                <p id="version" class="instructions"></p>
+
+                <div class="sidebar">
+                    <h3>Channels</h3>
+                    <ul id="channel-list">
+                        {% for channel in channels %}
+                        <li class="channel-item" data-room="{{ channel.name.lower() }}">{{ channel.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
 
             <div class="main-content">
@@ -38,17 +43,26 @@
                     <button onclick="showLogin()">Back to Login</button>
                     <p id="register-message"></p>
                 </div>
-
-                <div id="chat-section" style="display: none;">
+                
+                <div id="header-area" style="display: none;">
                     <p>Welcome, <span id="current-user"></span>! <button onclick="logout()">Logout</button></p>
                     <p class="instructions">Click on a channel to join</p>
+                </div>
+
+                <div id="chat-section" style="display: none;">
 
                     <hr>
 
-                    <div id="chat"></div>
+                    <div id="chat-area">
+                        <div id="chat"></div>
+                    </div>
 
                     <br>
 
+                    
+                </div>
+
+                <div id="message-input" style="display: none;">
                     <input id="message" class="message" placeholder="Message">
                     <button onclick="sendMessage()">Send</button>
                 </div>

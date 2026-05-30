@@ -44,6 +44,8 @@ async function login() {
         document.getElementById("current-user").textContent = username;
         document.getElementById("auth-section").style.display = "none";
         document.getElementById("chat-section").style.display = "block";
+        document.getElementById("header-area").style.display = "block";
+        document.getElementById("message-input").style.display = "block";
     }
 }
 

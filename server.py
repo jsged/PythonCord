@@ -22,7 +22,7 @@ channel_files = {channel["name"].lower(): channel["file"] for channel in channel
 # Load users from JSON file or create empty dict
 users = {}
 if os.path.exists(USERS_FILE):
-    with open(USERS_FILE, "r") as f:
+    with open(USERS_FILE, "r", encoding="utf-8") as f:
         users = json.load(f)
 
 @app.route("/")
@@ -90,7 +90,7 @@ def handle_join(data):
 
     history = []
     if os.path.exists(filepath):
-        with open(filepath, "r") as f:
+        with open(filepath, "r", encoding="utf-8") as f:
             history = f.readlines()
 
     emit("chat_history", history)
@@ -99,7 +99,7 @@ def handle_join(data):
 
     socketio.emit("receive_message", join_msg, to=room)
 
-    with open(filepath, "a") as f:
+    with open(filepath, "a", encoding="utf-8") as f:
         f.write(join_msg + "\n")
 
 @socketio.on("send_message")
@@ -118,7 +118,7 @@ def handle_message(data):
 
     filepath = os.path.join(ROOM_FOLDER, filename)
 
-    with open(filepath, "a") as f:
+    with open(filepath, "a", encoding="utf-8") as f:
         f.write(text + "\n")
 
     emit("receive_message", (text + "\n"), to=room)
@@ -134,7 +134,7 @@ def handle_leave(data):
     filename = channel_files.get(room.lower())
     if filename:
         filepath = os.path.join(ROOM_FOLDER, filename)
-        with open(filepath, "a") as f:
+        with open(filepath, "a", encoding="utf-8") as f:
             f.write(leave_msg + "\n")
 
     socketio.emit("receive_message", leave_msg, to=room)
