@@ -7,7 +7,7 @@ fetch("/static/version.json")
   .then(res => res.json())
   .then(data => {
       document.getElementById("version").textContent =
-          `v${data.version} - ${data.message}`;
+          `v${data.version}`;
   });
 
 function showRegister() {
@@ -127,6 +127,11 @@ function sendMessage() {
     const messageInput = document.getElementById("message");
     const message = messageInput.value;
 
+    if (message.trim() === "") {
+        messageInput.value = "";
+        return;
+    }
+
     socket.emit("send_message", {
         username: username,
         room: currentRoom,
@@ -173,6 +178,13 @@ function addMessage(msg, playSound = false) {
     chat.appendChild(messageDiv);
     chat.scrollTop = chat.scrollHeight;
 }
+
+document.getElementById("message").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); // stops newline in input/textarea
+        sendMessage();
+    }
+});
 
 // Channel selection functionality
 document.addEventListener('DOMContentLoaded', function() {

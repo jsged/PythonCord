@@ -83,3 +83,44 @@ NightLight(remake): I'm sure it won't beeee
 jsged: YESSSS
 jsged: refresh
 --- jsged joined the room ---
+--- jsged joined the room ---
+--- NightLight(remake) joined the room ---
+--- NightLight(remake) joined the room ---
+NightLight(remake): ♥️
+NightLight(remake): heyyyy emojis workkkk
+NightLight(remake): awesome! :3
+jsged: WHAT
+jsged: 
+jsged: I DIDNT CHANGE ANYTHING
+jsged: 😭
+NightLight(remake): they work thoughhhh
+jsged: YAYYY
+NightLight(remake): thank goshhh 😱
+jsged: baahhahahah
+NightLight(remake): gotta be honest, theses emojis are better than discord emojis
+jsged: i need to make enter a send button
+jsged: yesss i agree
+jsged: 
+jsged: 
+jsged: 
+jsged: 
+NightLight(remake):  
+NightLight(remake): 
+jsged: it does
+jsged: but only if u last had it clicked
+NightLight(remake): hrm and maybe make it so you can't send empty messages
+jsged: yessss oki
+NightLight(remake): 💻
+NightLight(remake): what are you using for the UI by the wayy
+jsged: just plain old html
+jsged: 
+jsged: 
+--- jsged joined the room ---
+jsged: just normal htmlll
+jsged: oooo it works
+jsged: i js added a key listener
+--- jsged joined the room ---
+jsged: hyesssss
+jsged: i cant send blankkkk
+--- NightLight(remake) joined the room ---
+NightLight(remake): successsss
