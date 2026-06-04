@@ -166,11 +166,11 @@ function addMessage(msg, playSound = false) {
     
     // Check if this is a message from the current user
     if (username && msg.startsWith(username + ": ")) {
-        messageDiv.className = "message user-message";
+        messageDiv.className = "msg sent";
     } else if (msg.startsWith("---")) {
         messageDiv.className = "server-message";
     } else {
-        messageDiv.className = "self-message";
+        messageDiv.className = "msg rcvd";
 
         if (playSound) {
             notification.play();

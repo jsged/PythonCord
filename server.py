@@ -95,12 +95,12 @@ def handle_join(data):
 
     emit("chat_history", history)
 
-    join_msg = f"--- {username} joined the room ---"
+    #join_msg = f"--- {username} joined the room ---"
 
-    socketio.emit("receive_message", join_msg, to=room)
+    #socketio.emit("receive_message", join_msg, to=room)
 
-    with open(filepath, "a", encoding="utf-8") as f:
-        f.write(join_msg + "\n")
+    #with open(filepath, "a", encoding="utf-8") as f:
+    #    f.write(join_msg + "\n")
 
 @socketio.on("send_message")
 def handle_message(data):
@@ -128,16 +128,16 @@ def handle_leave(data):
     username = data["username"]
     room = data["room"]
 
-    leave_msg = f"--- {username} left the room ---"
+    #leave_msg = f"--- {username} left the room ---"
 
     # Get the corresponding file for this room
-    filename = channel_files.get(room.lower())
-    if filename:
-        filepath = os.path.join(ROOM_FOLDER, filename)
-        with open(filepath, "a", encoding="utf-8") as f:
-            f.write(leave_msg + "\n")
+    #filename = channel_files.get(room.lower())
+    #if filename:
+    #    filepath = os.path.join(ROOM_FOLDER, filename)
+    #    with open(filepath, "a", encoding="utf-8") as f:
+    #        f.write(leave_msg + "\n")
 
-    socketio.emit("receive_message", leave_msg, to=room)
+    #socketio.emit("receive_message", leave_msg, to=room)
     leave_room(room)
 
 
