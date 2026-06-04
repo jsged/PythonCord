@@ -2,6 +2,11 @@ body {
     font-family: Arial;
 }
 
+:root {
+    --message-color: #007AFF;
+}
+
+
 .container {
     display: flex;
     height: 100vh;
@@ -49,6 +54,24 @@ body {
     margin: 5px 0 10px 0;
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #ababab;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    min-width: 300px;
+}
+
 #chat {
     display: flex;
     flex-direction: column;
@@ -92,14 +115,15 @@ body {
 
 .msg {
   position: relative;
-  max-width: 75%;
+  max-width: 50%;
   padding: 7px 15px;
   margin-bottom: 2px;
+  overflow-wrap: anywhere;
 }
 
 .msg.sent {
   border-radius: var(--rad) var(--rad-sm) var(--rad-sm) var(--rad);
-  background: #42a5f5;
+  background: var(--message-color);
   color: #fff;
   /* moves it to the right */
   margin-left: auto;

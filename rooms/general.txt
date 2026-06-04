@@ -1,4 +1,119 @@
-admin: hello
-admin: hello
-leyline: hi
-leyline: hi
+Server: This is the general chat.
+admin: test
+admin2: hiii
+admin: hi
+admin: hi
+admin: hi
+admin2: hii
+admin2: hiii
+admin: hii
+admin: hii
+admin: hi
+admin: hi
+admin: hih
+admin: ih
+admin: ih
+admin2: hiiii
+admin: mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+jsged: aghhhhh
+jsged: oh anddd
+jsged: a notification soundddd
+jsged: hi
+jsged: hi
+jsged: hi
+NightLight(remake): awesomeeee :3
+NightLight(remake): ❤️
+jsged: hehehehe
+jsged: are u proudddd
+jsged: also click settings
+NightLight(remake): yesssss
+jsged: hehehehe
+NightLight(remake): this is amazing! ^^
+jsged: i got rid of join messagessss
+jsged: cuz it looked messy
+jsged: but im thinking of adding a member list
+NightLight(remake): goodness you can even change the color
+jsged: AND A FEATURE DISCORD COULD NEVER COMPREHEND
+jsged: LAST ONLINE
+NightLight(remake): niceeee
+NightLight(remake): hehehe
+jsged: YESSS
+jsged: im gonna use it so basically u ping the server every second
+jsged: js once a seconf
+jsged: so not bad
+NightLight(remake): heheehe
+jsged: same way dc does it
+jsged: and if u reply to a ping
+jsged: ur online
+jsged: and if u dont
+jsged: ur off
+jsged: and then ill add idle too
+NightLight(remake): yeah that's a really good idea
+jsged: which will js be a times
+NightLight(remake): so this is all made in python???
+jsged: timer
+jsged: yessss
+NightLight(remake): ????
+jsged: lemme send u the repo
+NightLight(remake): you're a pro
+jsged: wel
+jsged: the language breakdown
+jsged: this is all html and js
+jsged: but the server handling all messages and rooms and authentifications
+jsged: is all python
+NightLight(remake): yeahhh :3
+NightLight(remake): that's really neat
+jsged: and it manages the host of the html and stuff
+jsged: i also wanna add attachments
+jsged: but thatll be hard
+jsged: cuz idk how to store them all
+NightLight(remake): you could pull the snap chat and just delete everything when they're closed 💔
+jsged: ooooo
+jsged: okay
+jsged: or i could dc is
+jsged: it
+NightLight(remake): yeah true
+jsged: wait no
+jsged: the snap approach wont work
+NightLight(remake): why nottt
+jsged: cuz everyone will have to view it
+NightLight(remake): oh wait that's true
+jsged: so itll have to be stored until everyone opens it
+jsged: i think ill do a dc
+NightLight(remake): yeahhh danggg 
+jsged: where its deleted after like
+jsged: 30 days?
+NightLight(remake): good idea!
+jsged: ill find a way to store it
+jsged: and currently allk users are js json
+NightLight(remake): I wish discord had message pinging like this it's so silly :3
+jsged: hehehehe
+jsged: im gonna edit it though
+jsged: cuz its way too high pitched
+jsged: im gonna bring the top end off
+jsged: also and the chat rooms are all txr
+jsged: ttxt
+jsged: im gonna move it all to databases
+NightLight(remake): yeahhh :3
+jsged: but then ill have to rewrite most of it
+jsged: alsooo
+NightLight(remake): so how does this run?
+jsged: do u want me to change ur user to have the originbal one back
+jsged: wdym how
+NightLight(remake): oh I mean as in like is it running oy our computer or whatt?
+jsged: all mine for now
+NightLight(remake): ohhh eenteresting :3
+jsged: but im gonna seperate the client and the server at some point
+jsged: so then i can do desktop apps easier
+NightLight(remake): yeahh good idea :3
+jsged: and then have one central server
+jsged: but then also host one vlient online
+jsged: so keep it like this
+jsged: so then i have online
+NightLight(remake): ohh cool ^^
+jsged: but then also make a seperate client for dekstop and mobile apps
+jsged: but i think ill do that way after
+jsged: im gonna go to the shop nowwww
+jsged: ill keep this on thoughhh\
+jsged: bnut message on dccc
+NightLight(remake): mhkayyy! ^^

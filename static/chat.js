@@ -10,6 +10,13 @@ fetch("/static/version.json")
           `v${data.version}`;
   });
 
+function changeColor(color) {
+    document.documentElement.style.setProperty(
+        "--message-color",
+        color
+    );
+}
+
 function showRegister() {
     document.getElementById("auth-section").style.display = "none";
     document.getElementById("register-section").style.display = "block";
@@ -157,6 +164,21 @@ socket.on("chat_history", function(messages) {
 
 });
 
+function openSettings() {
+    document.getElementById("settingsModal").style.display = "flex";
+}
+
+function closeSettings() {
+    document.getElementById("settingsModal").style.display = "none";
+}
+
+// Optional: close when clicking outside the box
+document.getElementById("settingsModal").addEventListener("click", e => {
+    if (e.target.id === "settingsModal") {
+        closeSettings();
+    }
+});
+
 function addMessage(msg, playSound = false) {
     const chat = document.getElementById("chat");
     let notification = new Audio('static/ping.mp3');
@@ -167,7 +189,7 @@ function addMessage(msg, playSound = false) {
     // Check if this is a message from the current user
     if (username && msg.startsWith(username + ": ")) {
         messageDiv.className = "msg sent";
-    } else if (msg.startsWith("---")) {
+    } else if (msg.startsWith("Server: ")) {
         messageDiv.className = "server-message";
     } else {
         messageDiv.className = "msg rcvd";
