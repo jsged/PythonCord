@@ -2,94 +2,135 @@
 <html>
     <head>
         <title>PyTalk</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="stylesheet" href="../static/styles.css">
     </head>
 
     <body>
 
-        <div class="container">
+        <!-- ==================== AUTH OVERLAY ==================== -->
+        <div id="auth-overlay" class="auth-overlay">
+            <div class="auth-card">
+                <img src="../static/images/logo_colour.png" alt="PyTalk" class="auth-logo">
+                <p id="version" class="version-text"></p>
 
-            
-
-            
-
-            <div class="sidebar-area">
-
-                <img src="../static/images/logo_colour.png" alt="Logo" class="logo">
-                <p id="version" class="instructions"></p>
-
-                <div class="sidebar">
-                    <h3>Channels</h3>
-                    <ul id="channel-list">
-                        {% for channel in channels %}
-                        <li class="channel-item" data-room="{{ channel.name.lower() }}">{{ channel.name }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-
-                <button onclick="openSettings()">Settings</button>
-                
-            </div>
-
-            <div class="main-content">
-
-                <div id="settingsModal" class="modal">
-                    <div class="modal-content">
-                        <h2>Settings</h2>
-
-                            <button onclick="changeColor('#42a5f5')">Default (Blue)</button>
-                            <button onclick="changeColor('#8B5CF6')">Purple</button>
-                            <button onclick="changeColor('#30D158')">Green</button>
-                            <button onclick="changeColor('#14B8A6')">Teal</button>
-                            <button onclick="changeColor('#6366F1')">Indigo</button>
-
-                            <br><br>
-
-                        <button onclick="closeSettings()">Close</button>
-                    </div>
-                </div>
                 <div id="auth-section">
-                    <h3>Login</h3>
-                    <input id="login-username" placeholder="Username" type="text">
-                    <input id="login-password" placeholder="Password" type="password">
-                    <button onclick="login()">Login</button>
-                    <button onclick="showRegister()">Register</button>
-                    <p id="auth-message"></p>
+                    <h2>Welcome to PyTalk</h2>
+                    <p class="auth-subtitle">Sign in to start messaging</p>
+                    <div class="auth-field">
+                        <input id="login-username" placeholder="Username" type="text" autocomplete="username">
+                    </div>
+                    <div class="auth-field">
+                        <input id="login-password" placeholder="Password" type="password" autocomplete="current-password">
+                    </div>
+                    <button class="auth-btn primary" onclick="login()">Sign In</button>
+                    <button class="auth-btn secondary" onclick="showRegister()">Create Account</button>
+                    <p id="auth-message" class="auth-message"></p>
                 </div>
 
                 <div id="register-section" style="display: none;">
-                    <h3>Register</h3>
-                    <input id="register-username" placeholder="Username" type="text">
-                    <input id="register-password" placeholder="Password" type="password">
-                    <input id="register-confirm-password" placeholder="Confirm Password" type="password">
-                    <button onclick="register()">Register</button>
-                    <button onclick="showLogin()">Back to Login</button>
-                    <p id="register-message"></p>
-                </div>
-                
-                <div id="header-area" style="display: none;">
-                    <p>Welcome, <span id="current-user"></span>! <button onclick="logout()">Logout</button></p>
-                    <p class="instructions">Click on a channel to join</p>
-                </div>
-
-                <div id="chat-section" style="display: none;">
-
-                    <hr>
-
-                    <div id="chat-area">
-                        <div id="chat"></div>
+                    <h2>Create Account</h2>
+                    <p class="auth-subtitle">Join the conversation</p>
+                    <div class="auth-field">
+                        <input id="register-username" placeholder="Username" type="text" autocomplete="username">
                     </div>
-
-                    <br>
-
-                    
-                </div>
-
-                <div id="message-input" style="display: none;">
-                    <input id="message" class="message" placeholder="Message">
-                    <button onclick="sendMessage()">Send</button>
+                    <div class="auth-field">
+                        <input id="register-password" placeholder="Password" type="password" autocomplete="new-password">
+                    </div>
+                    <div class="auth-field">
+                        <input id="register-confirm-password" placeholder="Confirm Password" type="password" autocomplete="new-password">
+                    </div>
+                    <button class="auth-btn primary" onclick="register()">Register</button>
+                    <button class="auth-btn secondary" onclick="showLogin()">Back to Sign In</button>
+                    <p id="register-message" class="auth-message"></p>
                 </div>
             </div>
+        </div>
+
+        <!-- ==================== SETTINGS MODAL ==================== -->
+        <div id="settingsModal" class="modal">
+            <div class="modal-content">
+                <h2>Bubble Color</h2>
+                <div class="color-grid">
+                    <button class="color-swatch" style="background:#007AFF" onclick="changeColor('#007AFF')" title="Blue"></button>
+                    <button class="color-swatch" style="background:#8B5CF6" onclick="changeColor('#8B5CF6')" title="Purple"></button>
+                    <button class="color-swatch" style="background:#30D158" onclick="changeColor('#30D158')" title="Green"></button>
+                    <button class="color-swatch" style="background:#14B8A6" onclick="changeColor('#14B8A6')" title="Teal"></button>
+                    <button class="color-swatch" style="background:#FF6B6B" onclick="changeColor('#FF6B6B')" title="Red"></button>
+                    <button class="color-swatch" style="background:#6366F1" onclick="changeColor('#6366F1')" title="Indigo"></button>
+                    <button class="color-swatch" style="background:#F59E0B" onclick="changeColor('#F59E0B')" title="Amber"></button>
+                    <button class="color-swatch" style="background:#EC4899" onclick="changeColor('#EC4899')" title="Pink"></button>
+                </div>
+                <br>
+                <button class="auth-btn secondary" onclick="closeSettings()">Done</button>
+            </div>
+        </div>
+
+        <!-- ==================== APP CONTAINER ==================== -->
+        <div id="app-container" class="app-container" style="display: none;">
+
+            <!-- ---------- SIDEBAR ---------- -->
+            <aside id="sidebar" class="sidebar">
+                <div class="sidebar-header">
+                    <img src="../static/images/logo_colour.png" alt="PyTalk" class="sidebar-logo">
+                </div>
+                <div class="sidebar-search">
+                    <span class="search-icon">🔍</span>
+                    <span class="search-placeholder">Search</span>
+                </div>
+                <h4 class="sidebar-label">Channels</h4>
+                <ul id="channel-list" class="channel-list">
+                    {% for channel in channels %}
+                    <li class="channel-item" data-room="{{ channel.name.lower() }}">
+                        <span class="channel-avatar">{{ channel.name[0] }}</span>
+                        <span class="channel-name">{{ channel.name }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <div class="sidebar-footer">
+                    <span class="sidebar-user" id="sidebar-username"></span>
+                    <div class="sidebar-actions">
+                        <button class="icon-btn" onclick="openSettings()" title="Settings">⚙️</button>
+                        <button class="icon-btn" onclick="logout()" title="Sign Out">↩️</button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- ---------- MAIN CHAT ---------- -->
+            <main class="chat-main">
+                <!-- Chat header -->
+                <header class="chat-header">
+                    <button class="back-btn" id="back-btn" onclick="toggleSidebar()" title="Channels">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <div class="chat-header-info">
+                        <span class="chat-header-name" id="chat-header-name">PyTalk</span>
+                        <span class="chat-header-status" id="chat-header-status">Select a channel</span>
+                    </div>
+                </header>
+
+                <!-- Messages area -->
+                <div class="messages-container" id="messages-container">
+                    <div id="chat" class="chat-messages"></div>
+                </div>
+
+                <!-- Compose bar (hidden until channel joined) -->
+                <div class="compose-bar" id="compose-bar" style="display: none;">
+                    <button class="compose-btn" title="Coming soon">+</button>
+                    <div class="compose-input-wrap">
+                        <input
+                            id="message"
+                            class="compose-input"
+                            placeholder="iMessage"
+                            type="text"
+                            autocomplete="off"
+                        >
+                    </div>
+                    <button class="compose-send" id="send-btn" onclick="sendMessage()" title="Send" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                    </button>
+                </div>
+            </main>
         </div>
 
         <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>

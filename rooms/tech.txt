@@ -5,3 +5,9 @@ admin: TEST
 admin: TEST
 admin: TEST
 --- admin left the room ---
+admin: hi
+admin: hello
+admin: bigger
+admin: make it even bigger
+admin: testing messages
+admin: hi
